@@ -1,0 +1,640 @@
+---
+import '../styles/global.css';
+import { Icon } from 'astro-icon/components';
+
+const selectedWorks = [
+  { id: "01", type: "E-commerce UI", title: "arc.store — Premium Retail", slot: "01", span: "md:col-span-2 md:row-span-2", desc: "Production-quality retail frontend with modular architecture and custom animations.", link: "C:/Users/hirob/arc.store/index.html" },
+  { id: "02", type: "Creative Studio", title: "vrtx-studio — Next.js Agency", slot: "02", span: "md:col-span-1 md:row-span-1", desc: "High-performance creative agency site built with Next.js and modern design principles.", link: "C:/Users/hirob/vrtx-studio" },
+  { id: "03", type: "Financial Dashboard", title: "ledger-app — Asset Tracking", slot: "03", span: "md:col-span-1 md:row-span-1", desc: "Clean, intuitive interface for managing personal finance and tracking assets.", link: "C:/Users/hirob/ledger-app" },
+  { id: "04", type: "Analytics UI", title: "pulse — Data Visualization", slot: "04", span: "md:col-span-1 md:row-span-2", desc: "Modern dashboard focusing on real-time metrics and sophisticated data charts.", link: "C:/Users/hirob/pulse" },
+  { id: "05", type: "Tech Storefront", title: "diozaz-gadgets — Next.js Shop", slot: "05", span: "md:col-span-2 md:row-span-1", desc: "Sophisticated gadget marketplace featuring elite tech components.", link: "C:/Users/hirob/diozaz-gadgets" },
+  { id: "06", type: "Task Management", title: "tasks-app — Productivity", slot: "06", span: "md:col-span-1 md:row-span-1", desc: "Minimalist task tracker with focus on accessibility and efficient user flow.", link: "C:/Users/hirob/tasks-app" },
+  { id: "07", type: "Dark Portfolio", title: "luminary — Elite Showcase", slot: "07", span: "md:col-span-1 md:row-span-1", desc: "A sophisticated dark-themed portfolio project proving design excellence.", link: "C:/Users/hirob/luminary/index.html" },
+  { id: "08", type: "Fintech UI", title: "crumb-app — Modern Banking", slot: "08", span: "md:col-span-2 md:row-span-1", desc: "Next-gen banking interface with focus on pixel-perfect financial data.", link: "C:/Users/hirob/crumb-app" },
+  { id: "09", type: "SaaS Platform", title: "ink-platform — Digital Tools", slot: "09", span: "md:col-span-2 md:row-span-1", desc: "Modern SaaS interface designed for scalability and professional performance.", link: "C:/Users/hirob/ink-platform" },
+];
+
+const fullProjects = [
+  { 
+    title: "AI Automation Project", 
+    type: "AUTOMATION", 
+    desc: "Automated system for posting content and managing sales outreach on Facebook.", 
+    tags: ["Python", "ML", "API"], 
+    video: "https://www.youtube.com/watch?v=mXgK4_49v_E" 
+  },
+  { 
+    title: "Robotics Simulation", 
+    type: "Research", 
+    desc: "Path planning algorithms and real-time environmental adaptation research.", 
+    tags: ["ROS", "Python", "Simulation"], 
+    video: "https://www.youtube.com/watch?v=57XwC4vHpLk" 
+  },
+  { 
+    title: "Automation Workflow System", 
+    type: "Learning Project", 
+    status: "In Development", 
+    desc: "Intelligent automation workflows using n8n — connecting APIs, conditional logic.", 
+    tags: ["n8n", "API Integration"] 
+  },
+  { 
+    title: "Training Custom Robot", 
+    type: "Reinforcement Learning", 
+    desc: "Trained a simulated wheeled robot with camera to locate and push a ball. PPO, DQN, A2C.", 
+    tags: ["RL/Gym", "Simulation"], 
+    videos: [
+      { label: "PPO", url: "https://www.youtube.com/watch?v=0Yu5Zp-D0G4" },
+      { label: "DQN", url: "https://www.youtube.com/watch?v=IOIGB7olXTg" },
+      { label: "A2C", url: "https://www.youtube.com/watch?v=h3BZelFPu8o" }
+    ]
+  },
+  { 
+    title: "Aerial Threat Detection", 
+    type: "Deep Learning", 
+    desc: "Classifies soldiers from drone-captured aerial footage using computer vision.", 
+    tags: ["Python", "Computer Vision"], 
+    video: "https://www.youtube.com/watch?v=G2jgcfSMbOg" 
+  },
+  { 
+    title: "Three.js Interactive Game", 
+    type: "Game Project", 
+    desc: "Browser-based 3D interactive game with real-time rendering and scene management.", 
+    tags: ["Three.js", "WebGL"], 
+    link: "https://ite18-final-project.vercel.app/" 
+  }
+];
+
+const featuredProject = {
+  title: "Unified Payroll & Attendance System",
+  client: "Philippine Coconut Authority",
+  desc: "A comprehensive internal management platform covering payroll processing, real-time attendance tracking, and DTR generation.",
+  link: "https://www.figma.com/proto/OGEUarEX6FCiiUc1crGGNX/PCA---Final-Design-?node-id=2-10229"
+};
+
+const totalProjectsCount = selectedWorks.length + fullProjects.length + 1;
+
+const technicalSkills = [
+  { label: "Programming", level: 88 },
+  { label: "Web Development", level: 85 },
+  { label: "Front-End Dev", level: 82 },
+  { label: "UI/UX Design", level: 80 },
+  { label: "Machine Learning", level: 70 },
+  { label: "Robotics Simulation", level: 65 },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hiroyuki B. Toyosaki — Premium Portfolio</title>
+  <script is:inline src="https://cdn.tailwindcss.com"></script>
+  <script is:inline>
+    window.tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: '#C9A84C',
+            'bg-primary': '#0A0A0A',
+            'bg-secondary': '#111111',
+            'bg-tertiary': '#161616',
+          }
+        }
+      }
+    }
+  </script>
+  <style is:inline>
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 280px;
+      grid-auto-flow: dense;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .bento-card {
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+    .bento-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+      z-index: 1;
+    }
+    .bento-noise {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    .bento-grid-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.2;
+    }
+    .card-content {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      z-index: 10;
+    }
+    .hover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.92);
+      z-index: 20;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+    }
+    .bento-card:hover .hover-overlay {
+      transform: translateY(0);
+    }
+    .navbar-scrolled {
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+      }
+      .span-mobile-reset {
+        grid-column: span 1 / span 1 !important;
+        grid-row: span 1 / span 1 !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-bg-primary text-[#F0EDE8] selection:bg-accent selection:text-bg-primary">
+
+  <div id="custom-cursor"></div>
+  <div id="custom-cursor-outline"></div>
+
+  <!-- 01 · NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-[100] border-b border-[rgba(240,237,232,0.08)] transition-all duration-300">
+    <div class="container h-20 flex items-center justify-between">
+      <a href="#hero" class="text-lg font-bold text-accent" style="font-family:var(--font-display)">HT</a>
+      
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#hero" class="nav-link relative text-[13px] font-medium uppercase tracking-[0.08em]">Home</a>
+        <a href="#works" class="nav-link relative text-[13px] font-medium uppercase tracking-[0.08em]">Works</a>
+        <a href="#about" class="nav-link relative text-[13px] font-medium uppercase tracking-[0.08em]">About</a>
+        <a href="#skills" class="nav-link relative text-[13px] font-medium uppercase tracking-[0.08em]">Skills</a>
+        <a href="#contact" class="nav-link relative text-[13px] font-medium uppercase tracking-[0.08em]">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <div class="pill border-accent/30 text-accent">
+          <div class="pulse-dot"></div>
+          <span>Available</span>
+        </div>
+        <button id="mobileMenuBtn" class="md:hidden text-accent" onclick="window.toggleMobileMenu()">
+          <Icon name="lucide:menu" class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div id="mobile-menu" class="hidden fixed inset-0 z-[150] bg-bg-primary flex flex-col items-center justify-center gap-8">
+    <button class="absolute top-8 right-8 text-accent" onclick="window.toggleMobileMenu()">
+      <Icon name="lucide:x" class="w-8 h-8" />
+    </button>
+    <a href="#hero" class="text-4xl font-bold" onclick="window.toggleMobileMenu()">Home</a>
+    <a href="#works" class="text-4xl font-bold" onclick="window.toggleMobileMenu()">Works</a>
+    <a href="#about" class="text-4xl font-bold" onclick="window.toggleMobileMenu()">About</a>
+    <a href="#skills" class="text-4xl font-bold" onclick="window.toggleMobileMenu()">Skills</a>
+    <a href="#contact" class="text-4xl font-bold" onclick="window.toggleMobileMenu()">Contact</a>
+  </div>
+
+  <main>
+    <!-- 02 · HERO -->
+    <section id="hero" class="min-h-screen flex flex-col justify-center pt-20">
+      <div class="container">
+        <div class="grid md:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+          <div class="reveal-group">
+            <p class="text-[13px] tracking-[0.06em] text-[rgba(240,237,232,0.45)] mb-8 reveal">Computer Science · UI/UX & Front-End Developer</p>
+            <h1 class="text-[clamp(60px,10vw,128px)] leading-[0.85] mb-4 reveal">Hiroyuki</h1>
+            <h1 class="text-[clamp(60px,10vw,128px)] leading-[0.85] mb-12 reveal">B. Toyosaki</h1>
+            <p class="max-w-[480px] text-lg font-light text-[rgba(240,237,232,0.45)] mb-16 reveal">
+              Building elegant, high-performance software with a passion for design, AI automation, and systems that just feel right.
+            </p>
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-12 reveal">
+              <div class="flex gap-4">
+                <a href="#works" class="pill border-accent text-accent px-8 py-3 hover:bg-accent hover:text-bg-primary">View Projects</a>
+                <a href="#contact" class="pill border-[rgba(240,237,232,0.08)] px-8 py-3 hover:border-[#F0EDE8]">Contact Me</a>
+              </div>
+              
+              <div class="flex items-center gap-6">
+                <span class="text-[12px] text-[rgba(240,237,232,0.20)]">Ampayon, Butuan City, PH</span>
+                <div class="w-[1px] h-12 bg-accent/20 relative overflow-hidden">
+                  <div class="absolute top-0 left-0 w-full h-1/2 bg-accent animate-[scrollLine_2s_infinite]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal relative">
+            <div class="aspect-square grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden border border-accent/20">
+              <img src="/profile.jpg" alt="Hiroyuki B. Toyosaki" class="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000" />
+            </div>
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 border-r border-b border-accent/40 pointer-events-none"></div>
+            <div class="absolute -top-4 -left-4 w-24 h-24 border-l border-t border-accent/40 pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · SELECTED WORKS -->
+    <section id="works" class="section-glow">
+      <div class="container">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 reveal">
+          <div>
+            <span class="label text-accent mb-4 block reveal">Selected Works</span>
+            <h2 class="text-[clamp(40px,5vw,64px)] reveal">Front-End Designs</h2>
+          </div>
+          <p class="text-[13px] text-[rgba(240,237,232,0.45)] md:mb-2 reveal">{selectedWorks.length} interfaces crafted with precision</p>
+        </div>
+
+        <div class="bento-grid">
+          {selectedWorks.map((work, i) => (
+            <div class={`bento-card ${work.span} span-mobile-reset reveal`} style={`transition-delay: ${i * 0.08}s`}>
+              <div class="bento-noise">
+                <svg width="100%" height="100%"><filter id={`noise-${i}`}><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter={`url(#noise-${i})`}/></svg>
+              </div>
+              <div class="bento-grid-lines"></div>
+              
+              <div class="absolute top-6 right-6 text-[10px] font-bold text-[rgba(240,237,232,0.20)] z-10">{work.slot}</div>
+              
+              <div class="card-content">
+                <div class="pill border-accent/20 bg-accent/5 text-accent text-[10px] px-3 py-1 mb-3">{work.type}</div>
+                <h3 class="text-sm font-medium text-[#F0EDE8]">{work.title}</h3>
+              </div>
+
+              <div class="hover-overlay">
+                <h3 class="text-2xl mb-4">{work.title}</h3>
+                <p class="text-sm mb-8 line-clamp-2 text-[rgba(240,237,232,0.6)]">{work.desc}</p>
+                {work.link ? (
+                  <a href={work.link} target="_blank" class="pill border-accent text-accent self-start flex items-center gap-2">View Project <Icon name="lucide:arrow-up-right" class="w-3 h-3" /></a>
+                ) : (
+                  <div class="pill border-accent text-accent self-start flex items-center gap-2 opacity-50">Local Project <Icon name="lucide:lock" class="w-3 h-3" /></div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · ABOUT -->
+    <section id="about">
+      <div class="container">
+        <span class="label text-accent mb-4 block reveal">Who I Am</span>
+        <h2 class="text-[clamp(36px,5vw,64px)] mb-20 reveal">Engineering meets creativity.</h2>
+        
+        <div class="grid md:grid-cols-[1.5fr_1fr] gap-20 items-start">
+          <div class="space-y-8 reveal">
+            <p class="text-[15px] leading-[1.8]">I'm a <strong class="text-[#F0EDE8]">graduating Computer Science student</strong> at Caraga State University with a deep interest in crafting software that merges technical precision with thoughtful design. I thrive at the intersection of engineering and creativity.</p>
+            <p class="text-[15px] leading-[1.8]">From UI/UX design systems in Figma to React-driven dashboards and AI automation pipelines — I approach every problem with analytical rigor and a fast-learning mindset. Whether it's a complex system architecture or a pixel-perfect interface, I care deeply about the details.</p>
+            <p class="text-[15px] leading-[1.8]">Currently expanding skills in workflow automation and AI integrations, focusing on <strong class="text-[#F0EDE8]">n8n</strong> to build scalable and intelligent automated systems. Exploring automation to build smarter systems.</p>
+          </div>
+
+          <div class="space-y-12">
+            <div class="grid grid-cols-2 gap-[1px] bg-[rgba(240,237,232,0.08)] border border-[rgba(240,237,232,0.08)] reveal">
+              {[
+                { val: "1+", label: "Year Experience" },
+                { val: `${totalProjectsCount}+`, label: "Projects Built" },
+                { val: "6+", label: "Tech Stacks" },
+                { val: "∞", label: "Curiosity" }
+              ].map(stat => (
+                <div class="bg-bg-primary p-8 text-center">
+                  <div class="stat-num text-5xl mb-2" style="font-family:var(--font-display)">{stat.val}</div>
+                  <div class="text-[10px] uppercase tracking-widest text-[rgba(240,237,232,0.45)]">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div class="reveal">
+              <p class="label text-[rgba(240,237,232,0.45)] mb-6">Interests</p>
+              <div class="flex flex-wrap gap-2">
+                {["AI & Automation", "UI/UX Design", "Web Development", "Robotics", "Emerging Tech", "System Design"].map(tag => (
+                  <span class="pill border-[rgba(240,237,232,0.08)] text-[12px]">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-24 pt-8 border-t border-[rgba(240,237,232,0.08)] flex flex-wrap gap-8 text-[13px] text-[rgba(240,237,232,0.20)] reveal">
+          <div class="flex items-center gap-3"><Icon name="lucide:map-pin" class="w-4 h-4" /> Ampayon, Butuan City, PH</div>
+          <div class="flex items-center gap-3"><Icon name="lucide:phone" class="w-4 h-4" /> +63 970 400 7485</div>
+          <div class="flex items-center gap-3"><Icon name="lucide:mail" class="w-4 h-4" /> hirobaltazar9@gmail.com</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · EXPERIENCE -->
+    <section id="experience">
+      <div class="container">
+        <span class="label text-accent mb-4 block reveal">Where I've Worked</span>
+        <h2 class="text-[clamp(36px,5vw,64px)] mb-20 reveal">Experience</h2>
+
+        <div class="relative pl-12 border-l border-[rgba(240,237,232,0.08)] reveal">
+          <div class="absolute left-[-4px] top-0 w-2 h-2 rounded-full bg-accent"></div>
+          
+          <div class="card p-10 bg-bg-secondary reveal">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+              <div>
+                <h3 class="text-2xl mb-1">Philippine Coconut Authority Region XIII</h3>
+                <div class="flex items-center gap-4">
+                  <span class="text-sm font-medium text-accent">Front-End & UI/UX Developer</span>
+                  <span class="text-[10px] text-[rgba(240,237,232,0.20)] uppercase font-bold tracking-widest">Academic Project · Government Client</span>
+                </div>
+              </div>
+              <span class="pill border-[rgba(240,237,232,0.08)] text-[12px]">2024</span>
+            </div>
+
+            <div class="w-full h-[1px] bg-[rgba(240,237,232,0.08)] mb-8"></div>
+
+            <div class="space-y-6 mb-12">
+              {[
+                "Designed UI/UX using Figma — wireframes, prototypes, and design systems",
+                "Created Admin and Employee dashboard interfaces",
+                "Collaborated with React & TypeScript development teams",
+                "Translated system requirements into usable, accessible interfaces",
+                "Designed attendance, payroll, and leave request workflows",
+                "Applied responsive and accessible UI/UX principles throughout"
+              ].map(item => (
+                <div class="border-l border-accent pl-6 text-[14px] text-[rgba(240,237,232,0.45)]">
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <p class="label text-[rgba(240,237,232,0.45)] mb-4">Tools & Tech</p>
+              <div class="flex flex-wrap gap-2">
+                {["Figma", "React", "TypeScript", "UI/UX Design", "Design Systems", "Accessibility"].map(tool => (
+                  <span class="pill border-[rgba(240,237,232,0.08)] text-[11px]">{tool}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-16 space-y-4 reveal">
+            <div class="flex justify-between py-4 border-b border-[rgba(240,237,232,0.08)]">
+              <span class="text-[13px]">BS Computer Science · Caraga State University</span>
+              <span class="text-[13px] text-[rgba(240,237,232,0.20)]">2022–Present</span>
+            </div>
+            <div class="flex justify-between py-4 border-b border-[rgba(240,237,232,0.08)]">
+              <span class="text-[13px]">Senior High School · Carmen</span>
+              <span class="text-[13px] text-[rgba(240,237,232,0.20)]">2020–2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <span class="label text-accent mb-4 block reveal">What I Work With</span>
+        <h2 class="text-[clamp(36px,5vw,64px)] mb-24 reveal">Skills & Tools</h2>
+
+        <div class="grid md:grid-cols-2 gap-32 mb-32">
+          <div class="space-y-10 reveal">
+            <p class="label text-[rgba(240,237,232,0.45)] mb-8">Technical Proficiencies</p>
+            {technicalSkills.map(skill => (
+              <div class="space-y-4">
+                <div class="flex justify-between text-[13px] font-medium">
+                  <span>{skill.label}</span>
+                  <span class="text-accent">{skill.level}%</span>
+                </div>
+                <div class="w-full h-[1px] bg-[rgba(240,237,232,0.08)]">
+                  <div class="skill-fill h-full bg-accent transition-all duration-[1.2s]" data-width={skill.level} style="width: 0%"></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="reveal">
+            <p class="label text-[rgba(240,237,232,0.45)] mb-10">Tools & Technologies</p>
+            <div class="flex flex-wrap gap-4">
+              {["React", "TypeScript", "Figma", "Python", "HTML/CSS", "SQL", "OpenCV"].map(tool => (
+                <div class="pill border-[rgba(240,237,232,0.08)] px-6 py-3 font-medium hover:border-accent/30">{tool}</div>
+              ))}
+            </div>
+
+            <div class="mt-20">
+              <p class="label text-[rgba(240,237,232,0.45)] mb-6">Core Competencies</p>
+              <div class="flex flex-wrap gap-x-4 gap-y-2 text-[13px] text-[rgba(240,237,232,0.20)]">
+                {["System Design", "Debugging", "Data Structures", "Team Collaboration", "Communication", "Fast Learner", "Attention to Detail", "Problem Solving"].map((s, i, a) => (
+                  <span>{s}{i !== a.length - 1 ? " ·" : ""}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <p class="label text-[rgba(240,237,232,0.45)] mb-10">Currently Learning</p>
+          <div class="grid md:grid-cols-3 gap-6">
+            {[
+              { title: "Workflow Automation", desc: "Building automated pipelines using n8n, connecting APIs and designing process flows.", tags: ["n8n", "APIs", "AI Automation"] },
+              { title: "AI Integration", desc: "Integrating AI into workflows — chatbots, smart triggers, AI-powered assistants.", tags: ["Chatbots", "AI", "Smart Triggers"] },
+              { title: "System Integration", desc: "Connecting apps, databases, and services into unified intelligent pipelines.", tags: ["APIs", "SQL", "Pipelines"] }
+            ].map(card => (
+              <div class="card p-8 rounded-lg space-y-6 group">
+                <h4 class="text-xl">{card.title}</h4>
+                <p class="text-[13px] leading-relaxed">{card.desc}</p>
+                <div class="flex flex-wrap gap-2">
+                  {card.tags.map(tag => <span class="text-[10px] uppercase font-bold text-[rgba(240,237,232,0.20)]">{tag}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <span class="label text-accent mb-4 block reveal">What I've Built</span>
+        <h2 class="text-[clamp(36px,5vw,64px)] mb-20 reveal">Full Projects</h2>
+
+        <!-- Featured Project -->
+        <div class="card bg-bg-secondary grid md:grid-cols-2 mb-16 overflow-hidden reveal">
+          <div class="p-12 flex flex-col justify-center">
+            <span class="pill border-accent/20 bg-accent/5 text-accent text-[10px] self-start mb-6">Featured Project</span>
+            <h3 class="text-4xl mb-6">{featuredProject.title}</h3>
+            <p class="text-[13px] text-[rgba(240,237,232,0.45)] mb-4">{featuredProject.client}</p>
+            <p class="text-[14px] leading-relaxed mb-8">{featuredProject.desc}</p>
+            <div class="flex gap-4">
+              <a href={featuredProject.link} target="_blank" class="pill border-accent text-accent flex items-center gap-2">Live Preview <Icon name="lucide:arrow-right" class="w-3 h-3" /></a>
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-bg-tertiary to-bg-primary min-h-[340px] border-l border-[rgba(240,237,232,0.08)] relative opacity-50">
+             <div class="bento-noise absolute inset-0 opacity-10"></div>
+             <div class="bento-grid-lines absolute inset-0 opacity-20"></div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 reveal">
+          {fullProjects.map(p => (
+            <div class="card p-8 rounded-lg flex flex-col justify-between group">
+              <div>
+                <div class="flex justify-between items-start mb-6">
+                  <span class="label text-[rgba(240,237,232,0.45)]">{p.type}</span>
+                  {p.status && <span class="text-[9px] px-2 py-0.5 border border-accent/20 text-accent rounded-full">{p.status}</span>}
+                </div>
+                <h4 class="text-xl mb-4 text-[#F0EDE8]">{p.title}</h4>
+                <p class="text-[13px] leading-relaxed line-clamp-3">{p.desc}</p>
+              </div>
+              <div class="mt-10 flex flex-col gap-6">
+                {p.videos ? (
+                  <div class="flex flex-wrap gap-3">
+                    <p class="label text-[10px] text-[rgba(240,237,232,0.20)] w-full mb-1">Algorithm Demos:</p>
+                    {p.videos.map(v => (
+                      <a href={v.url} target="_blank" class="pill border-accent/30 text-accent text-[11px] px-3 py-1 hover:bg-accent/10 transition-colors">
+                        {v.label} <Icon name="lucide:arrow-up-right" class="w-2 h-2" />
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <div class="flex items-end justify-between w-full">
+                    <div class="flex flex-wrap gap-2">
+                      {p.tags.map(t => <span class="text-[10px] text-[rgba(240,237,232,0.20)] font-bold">{t}</span>)}
+                    </div>
+                    <div class="flex gap-4">
+                      {p.video && (
+                        <a href={p.video} target="_blank" class="text-accent flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest hover:underline">
+                          Demo <Icon name="lucide:play" class="w-3 h-3" />
+                        </a>
+                      )}
+                      {p.link && (
+                        <a href={p.link} target="_blank" class="text-accent flex items-center gap-2 text-[12px] font-bold uppercase tracking-widest hover:underline">
+                          View <Icon name="lucide:arrow-right" class="w-3 h-3" />
+                        </a>
+                      )}
+                      {!p.video && !p.link && (
+                        <span class="text-accent transition-transform group-hover:rotate-[-45deg] duration-300"><Icon name="lucide:arrow-right" class="w-4 h-4" /></span>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 · CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="grid md:grid-cols-[1fr_1.2fr] gap-24">
+          <div>
+            <span class="label text-accent mb-4 block reveal">Let's Work Together</span>
+            <h2 class="text-[clamp(36px,5vw,64px)] mb-8 reveal">Get in Touch</h2>
+            <p class="text-[16px] text-[rgba(240,237,232,0.45)] mb-16 reveal">Whether you have a project in mind or just want to connect — I'm always open.</p>
+            
+            <div class="space-y-0 reveal">
+              {[
+                { label: "Email", val: "hirobaltazar9@gmail.com", link: "mailto:hirobaltazar9@gmail.com" },
+                { label: "Phone", val: "+63 970 400 7485" },
+                { label: "Location", val: "Ampayon, Butuan City, PH" },
+                { label: "Status", val: "Available for opportunities", isStatus: true }
+              ].map(item => (
+                <div class="py-6 border-b border-[rgba(240,237,232,0.08)]">
+                  <p class="label text-[rgba(240,237,232,0.20)] mb-2">{item.label}</p>
+                  {item.link ? (
+                    <a href={item.link} class="text-[14px] text-[#F0EDE8] hover:text-accent transition-colors">{item.val}</a>
+                  ) : (
+                    <div class="flex items-center gap-3">
+                      {item.isStatus && <div class="pulse-dot"></div>}
+                      <p class={`text-[14px] ${item.isStatus ? 'text-accent' : 'text-[#F0EDE8]'}`}>{item.val}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="reveal">
+            <form action="https://formspree.io/f/xqeyrwlg" method="POST" class="space-y-8">
+              <div class="grid sm:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                  <label class="label text-[rgba(240,237,232,0.20)]">Name</label>
+                  <input type="text" name="name" placeholder="John Doe" required class="w-full bg-bg-secondary border border-[rgba(240,237,232,0.08)] rounded p-4 text-sm focus:border-accent outline-none transition-colors" />
+                </div>
+                <div class="space-y-3">
+                  <label class="label text-[rgba(240,237,232,0.20)]">Email</label>
+                  <input type="email" name="email" placeholder="john@example.com" required class="w-full bg-bg-secondary border border-[rgba(240,237,232,0.08)] rounded p-4 text-sm focus:border-accent outline-none transition-colors" />
+                </div>
+              </div>
+              <div class="space-y-3">
+                <label class="label text-[rgba(240,237,232,0.20)]">Subject</label>
+                <input type="text" name="subject" placeholder="Project Inquiry" class="w-full bg-bg-secondary border border-[rgba(240,237,232,0.08)] rounded p-4 text-sm focus:border-accent outline-none transition-colors" />
+              </div>
+              <div class="space-y-3">
+                <label class="label text-[rgba(240,237,232,0.20)]">Message</label>
+                <textarea name="message" rows="5" placeholder="Tell me about your project..." required class="w-full bg-bg-secondary border border-[rgba(240,237,232,0.08)] rounded p-4 text-sm focus:border-accent outline-none transition-colors resize-y min-h-[120px]"></textarea>
+              </div>
+              <button type="submit" class="w-full py-5 border border-accent text-accent uppercase font-bold text-[13px] tracking-widest hover:bg-accent hover:text-bg-primary transition-all duration-300">Send Inquiry</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 09 · FOOTER -->
+  <footer class="py-20 border-t border-[rgba(240,237,232,0.08)]">
+    <div class="container">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-12 mb-20">
+        <h2 class="text-3xl" style="font-family:var(--font-display)">Hiroyuki B. Toyosaki</h2>
+        <div class="flex gap-10">
+          <a href="#hero" class="text-[11px] uppercase font-bold tracking-widest text-[rgba(240,237,232,0.45)] hover:text-accent">Home</a>
+          <a href="#works" class="text-[11px] uppercase font-bold tracking-widest text-[rgba(240,237,232,0.45)] hover:text-accent">Works</a>
+          <a href="#about" class="text-[11px] uppercase font-bold tracking-widest text-[rgba(240,237,232,0.45)] hover:text-accent">About</a>
+          <a href="#skills" class="text-[11px] uppercase font-bold tracking-widest text-[rgba(240,237,232,0.45)] hover:text-accent">Skills</a>
+          <a href="#contact" class="text-[11px] uppercase font-bold tracking-widest text-[rgba(240,237,232,0.45)] hover:text-accent">Contact</a>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-[rgba(240,237,232,0.08)] flex justify-between items-center text-[10px] text-[rgba(240,237,232,0.20)] uppercase tracking-widest">
+        <span>© 2025 · Redesigned for Excellence</span>
+        <a href="#hero" class="hover:text-accent transition-colors">↑ Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../scripts/main.js"></script>
+</body>
+</html>
