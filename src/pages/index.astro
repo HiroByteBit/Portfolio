@@ -6,14 +6,14 @@ const selectedWorks = [
   { id: "01", type: "E-commerce UI", title: "arc.store — Premium Retail", slot: "01", span: "md:col-span-2 md:row-span-2", desc: "Production-quality retail frontend with modular architecture and custom animations.", link: "https://HiroByteBit.github.io/arc.store/", image: "previews/arc.png" },
   { id: "02", type: "Creative Studio", title: "vrtx-studio — Next.js Agency", slot: "02", span: "md:col-span-1 md:row-span-1", desc: "High-performance creative agency site built with Next.js and modern design principles.", link: "https://HiroByteBit.github.io/vrtx-studio/", image: "previews/vrtx.png" },
   { id: "03", type: "Financial Dashboard", title: "ledger-app — Asset Tracking", slot: "03", span: "md:col-span-1 md:row-span-1", desc: "Clean, intuitive interface for managing personal finance and tracking assets.", link: "https://HiroByteBit.github.io/ledger-app/", image: "previews/ledger.png" },
-  { id: "04", type: "Analytics UI", title: "pulse — Data Visualization", slot: "04", span: "md:col-span-1 md:row-span-2", desc: "Modern dashboard focusing on real-time metrics and sophisticated data charts.", link: "https://HiroByteBit.github.io/pulse/", image: "previews/pulse.png" },
-  { id: "05", type: "Tech Storefront", title: "diozaz-gadgets — Next.js Shop", slot: "05", span: "md:col-span-2 md:row-span-1", desc: "Sophisticated gadget marketplace featuring elite tech components.", link: "https://HiroByteBit.github.io/diozaz-gadgets/", image: "previews/dioza.png" },
+  { id: "04", type: "Food Order Online", title: "crumb-app — Fresh Delivery", slot: "04", span: "md:col-span-2 md:row-span-1", desc: "Modern food ordering platform with intuitive menu browsing and real-time cart management.", link: "https://HiroByteBit.github.io/crumb-app/", image: "previews/crumb.png" },
+  { id: "05", type: "iPhone Store", title: "diozaz-gadgets — Elite Shop", slot: "05", span: "md:col-span-1 md:row-span-1", desc: "Premium iPhone and tech boutique featuring the latest Apple ecosystem components.", link: "https://HiroByteBit.github.io/diozaz-gadgets/", image: "previews/dioza.png" },
   { id: "06", type: "Task Management", title: "tasks-app — Productivity", slot: "06", span: "md:col-span-1 md:row-span-1", desc: "Minimalist task tracker with focus on accessibility and efficient user flow.", link: "https://HiroByteBit.github.io/tasks-app/", image: "previews/task-app.png" },
-  { id: "07", type: "Dark Portfolio", title: "luminary — Elite Showcase", slot: "07", span: "md:col-span-1 md:row-span-1", desc: "A sophisticated dark-themed portfolio project proving design excellence.", link: "https://HiroByteBit.github.io/luminary/", image: "previews/luminary.png" },
-  { id: "08", type: "Fintech UI", title: "crumb-app — Modern Banking", slot: "08", span: "md:col-span-2 md:row-span-1", desc: "Next-gen banking interface with focus on pixel-perfect financial data.", link: "https://HiroByteBit.github.io/crumb-app/", image: "previews/crumb.png" },
+  { id: "07", type: "Dark Portfolio", title: "luminary — Elite Showcase", slot: "07", span: "md:col-span-2 md:row-span-2", desc: "A sophisticated dark-themed portfolio project proving design excellence.", link: "https://HiroByteBit.github.io/luminary/", image: "previews/luminary.png" },
+  { id: "08", type: "Analytics UI", title: "pulse — Data Visualization", slot: "08", span: "md:col-span-1 md:row-span-2", desc: "Modern dashboard focusing on real-time metrics and sophisticated data charts.", link: "https://HiroByteBit.github.io/pulse/", image: "previews/pulse.png" },
 ];
 
-const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const baseUrl = "/Portfolio/";
 
 const fullProjects = [
   { 
@@ -285,26 +285,26 @@ const technicalSkills = [
         <div class="bento-grid">
           {selectedWorks.map((work, i) => (
             <div class={`bento-card ${work.span} span-mobile-reset reveal group border border-accent/20 grayscale hover:grayscale-0 transition-all duration-700`} style={`transition-delay: ${i * 0.08}s`}>
-              <div class="absolute inset-0 z-0 overflow-hidden bg-bg-secondary">
-                <img src={base + work.image} alt={work.title} class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 opacity-80 group-hover:opacity-100 relative z-0" />
+              <div class="absolute inset-0 z-10 overflow-hidden bg-bg-secondary">
+                <img src={baseUrl + work.image} alt={work.title} class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000 opacity-70 group-hover:opacity-100" />
               </div>
-              <div class="bento-noise">
+              <div class="bento-noise z-20">
                 <svg width="100%" height="100%"><filter id={`noise-${i}`}><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter={`url(#noise-${i})`}/></svg>
               </div>
-              <div class="bento-grid-lines"></div>
+              <div class="bento-grid-lines z-20"></div>
               
-              <div class="absolute top-6 right-6 text-[10px] font-bold text-[rgba(240,237,232,0.20)] z-10">{work.slot}</div>
+              <div class="absolute top-6 right-6 text-[10px] font-bold text-white/40 z-30">{work.slot}</div>
               
-              <div class="card-content">
-                <div class="pill border-accent/20 bg-accent/5 text-accent text-[10px] px-3 py-1 mb-3">{work.type}</div>
-                <h3 class="text-sm font-medium text-[#F0EDE8]">{work.title}</h3>
+              <div class="card-content !z-30">
+                <div class="pill border-accent/20 bg-black/60 backdrop-blur-md text-accent text-[10px] px-3 py-1 mb-3">{work.type}</div>
+                <h3 class="text-sm font-medium text-white drop-shadow-md">{work.title}</h3>
               </div>
 
-              <div class="hover-overlay">
+              <div class="hover-overlay !z-40">
                 <h3 class="text-2xl mb-4">{work.title}</h3>
                 <p class="text-sm mb-8 line-clamp-2 text-[rgba(240,237,232,0.6)]">{work.desc}</p>
                 {work.link ? (
-                  <a href={work.link} target="_blank" class="pill border-accent text-accent self-start flex items-center gap-2">View Project <Icon name="lucide:arrow-up-right" class="w-3 h-3" /></a>
+                  <a href={work.link} target="_blank" class="pill border-accent text-accent self-start flex items-center gap-2 hover:bg-accent hover:text-black transition-all">View Project <Icon name="lucide:arrow-up-right" class="w-3 h-3" /></a>
                 ) : (
                   <div class="pill border-accent text-accent self-start flex items-center gap-2 opacity-50">Local Project <Icon name="lucide:lock" class="w-3 h-3" /></div>
                 )}
