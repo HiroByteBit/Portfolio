@@ -3,15 +3,17 @@ import '../styles/global.css';
 import { Icon } from 'astro-icon/components';
 
 const selectedWorks = [
-  { id: "01", type: "E-commerce UI", title: "arc.store — Premium Retail", slot: "01", span: "md:col-span-2 md:row-span-2", desc: "Production-quality retail frontend with modular architecture and custom animations.", link: "https://HiroByteBit.github.io/arc.store/", image: "/Portfolio/previews/arc.png" },
-  { id: "02", type: "Creative Studio", title: "vrtx-studio — Next.js Agency", slot: "02", span: "md:col-span-1 md:row-span-1", desc: "High-performance creative agency site built with Next.js and modern design principles.", link: "https://HiroByteBit.github.io/vrtx-studio/", image: "/Portfolio/previews/vrtx.png" },
-  { id: "03", type: "Financial Dashboard", title: "ledger-app — Asset Tracking", slot: "03", span: "md:col-span-1 md:row-span-1", desc: "Clean, intuitive interface for managing personal finance and tracking assets.", link: "https://HiroByteBit.github.io/ledger-app/", image: "/Portfolio/previews/ledger.png" },
-  { id: "04", type: "Analytics UI", title: "pulse — Data Visualization", slot: "04", span: "md:col-span-1 md:row-span-2", desc: "Modern dashboard focusing on real-time metrics and sophisticated data charts.", link: "https://HiroByteBit.github.io/pulse/", image: "/Portfolio/previews/pulse.png" },
-  { id: "05", type: "Tech Storefront", title: "diozaz-gadgets — Next.js Shop", slot: "05", span: "md:col-span-2 md:row-span-1", desc: "Sophisticated gadget marketplace featuring elite tech components.", link: "https://HiroByteBit.github.io/diozaz-gadgets/", image: "/Portfolio/previews/dioza.png" },
-  { id: "06", type: "Task Management", title: "tasks-app — Productivity", slot: "06", span: "md:col-span-1 md:row-span-1", desc: "Minimalist task tracker with focus on accessibility and efficient user flow.", link: "https://HiroByteBit.github.io/tasks-app/", image: "/Portfolio/previews/task-app.png" },
-  { id: "07", type: "Dark Portfolio", title: "luminary — Elite Showcase", slot: "07", span: "md:col-span-1 md:row-span-1", desc: "A sophisticated dark-themed portfolio project proving design excellence.", link: "https://HiroByteBit.github.io/luminary/", image: "/Portfolio/previews/luminary.png" },
-  { id: "08", type: "Fintech UI", title: "crumb-app — Modern Banking", slot: "08", span: "md:col-span-2 md:row-span-1", desc: "Next-gen banking interface with focus on pixel-perfect financial data.", link: "https://HiroByteBit.github.io/crumb-app/", image: "/Portfolio/previews/crumb.png" },
+  { id: "01", type: "E-commerce UI", title: "arc.store — Premium Retail", slot: "01", span: "md:col-span-2 md:row-span-2", desc: "Production-quality retail frontend with modular architecture and custom animations.", link: "https://HiroByteBit.github.io/arc.store/", image: "previews/arc.png" },
+  { id: "02", type: "Creative Studio", title: "vrtx-studio — Next.js Agency", slot: "02", span: "md:col-span-1 md:row-span-1", desc: "High-performance creative agency site built with Next.js and modern design principles.", link: "https://HiroByteBit.github.io/vrtx-studio/", image: "previews/vrtx.png" },
+  { id: "03", type: "Financial Dashboard", title: "ledger-app — Asset Tracking", slot: "03", span: "md:col-span-1 md:row-span-1", desc: "Clean, intuitive interface for managing personal finance and tracking assets.", link: "https://HiroByteBit.github.io/ledger-app/", image: "previews/ledger.png" },
+  { id: "04", type: "Analytics UI", title: "pulse — Data Visualization", slot: "04", span: "md:col-span-1 md:row-span-2", desc: "Modern dashboard focusing on real-time metrics and sophisticated data charts.", link: "https://HiroByteBit.github.io/pulse/", image: "previews/pulse.png" },
+  { id: "05", type: "Tech Storefront", title: "diozaz-gadgets — Next.js Shop", slot: "05", span: "md:col-span-2 md:row-span-1", desc: "Sophisticated gadget marketplace featuring elite tech components.", link: "https://HiroByteBit.github.io/diozaz-gadgets/", image: "previews/dioza.png" },
+  { id: "06", type: "Task Management", title: "tasks-app — Productivity", slot: "06", span: "md:col-span-1 md:row-span-1", desc: "Minimalist task tracker with focus on accessibility and efficient user flow.", link: "https://HiroByteBit.github.io/tasks-app/", image: "previews/task-app.png" },
+  { id: "07", type: "Dark Portfolio", title: "luminary — Elite Showcase", slot: "07", span: "md:col-span-1 md:row-span-1", desc: "A sophisticated dark-themed portfolio project proving design excellence.", link: "https://HiroByteBit.github.io/luminary/", image: "previews/luminary.png" },
+  { id: "08", type: "Fintech UI", title: "crumb-app — Modern Banking", slot: "08", span: "md:col-span-2 md:row-span-1", desc: "Next-gen banking interface with focus on pixel-perfect financial data.", link: "https://HiroByteBit.github.io/crumb-app/", image: "previews/crumb.png" },
 ];
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 
 const fullProjects = [
   { 
@@ -283,8 +285,8 @@ const technicalSkills = [
         <div class="bento-grid">
           {selectedWorks.map((work, i) => (
             <div class={`bento-card ${work.span} span-mobile-reset reveal group`} style={`transition-delay: ${i * 0.08}s`}>
-              <div class="absolute inset-0 z-0">
-                <img src={work.image} alt={work.title} class="w-full h-full object-cover opacity-40 group-hover:opacity-20 transition-opacity duration-500" />
+              <div class="absolute inset-0 z-[5]">
+                <img src={base + work.image} alt={work.title} class="w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
               </div>
               <div class="bento-noise">
                 <svg width="100%" height="100%"><filter id={`noise-${i}`}><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter={`url(#noise-${i})`}/></svg>
